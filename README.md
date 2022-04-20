@@ -6,7 +6,7 @@
 |---------------|-----------|
 | task_name     | string    |
 | priority      | string    |
-| Description   | string    |
+| description   | string    |
 | status        | string    |
 | points        | int       |
 
