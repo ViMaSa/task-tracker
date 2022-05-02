@@ -6,7 +6,8 @@ import SingleTaskComponent from "../../taskComponents/singleTaskComponent/single
 import Modal from 'react-modal';
 
 const TaskBoard = () => {
-  const BASE_URL = "https://task-tracker-back-end.herokuapp.com/tasks"
+  const BASE_URL = "https://task-tracker-back-end.herokuapp.com/tasks";
+  const TASK_OPTIONS = ["Ready", "In Progress", "Done"]
   const [tasks, setTasks] = useState([]);
   const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
 
@@ -84,6 +85,7 @@ const TaskBoard = () => {
       <Modal isOpen={createModalIsOpen}>
         <NewTaskComponent
           createNewTask={createNewTask}
+          TASK_OPTIONS={TASK_OPTIONS}
           setCreateModalIsOpen={setCreateModalIsOpen}>
         </NewTaskComponent>
         <button onClick={() => setCreateModalIsOpen(false)}>Cancel</button>

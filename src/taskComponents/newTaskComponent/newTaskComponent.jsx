@@ -6,7 +6,7 @@ const NewTaskComponent = (props) => {
     taskName: "",
     priority: 0,
     description: "",
-    status: "",
+    status: props.TASK_OPTIONS[0],
     points: 0
   })
 
@@ -26,11 +26,22 @@ const NewTaskComponent = (props) => {
   return (
     <div className="task-form">
       <form onSubmit={submitNewTask}>
-        Task Name: <input type="text" name="taskName" onChange={handleInputChange} value={newTask.taskName} />
-        Priority: <input type="number" name="priority" onChange={handleInputChange} value={newTask.priority} min="0" />
-        Status: <input type="text" name="status" onChange={handleInputChange} value={newTask.status} />
-        Description: <input type="text" name="description" onChange={handleInputChange} value={newTask.description} />
-        Points: <input type="number" name="points" onChange={handleInputChange} value={newTask.points} min="0" />
+        <label htmlFor="taskName">Task Name:</label>
+        <input type="text" name="taskName" onChange={handleInputChange} value={newTask.taskName} />
+        <label htmlFor="priority">Priority:</label>
+        <input type="number" name="priority" onChange={handleInputChange} value={newTask.priority} min="0" />
+        <label htmlFor="status">Status:</label>
+        <select name="status" id="status" onChange={handleInputChange}>
+          {props.TASK_OPTIONS.map(option => {
+            return (
+              <option value={option} key={option}>{option}</option>
+            )
+          })}
+        </select>
+        <label htmlFor="description">Description:</label>
+        <input type="text" name="description" onChange={handleInputChange} value={newTask.description} />
+        <label htmlFor="points">Points:</label>
+        <input type="number" name="points" onChange={handleInputChange} value={newTask.points} min="0" />
         <button type="submit">Create New Task</button>
       </form>
     </div>

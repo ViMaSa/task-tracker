@@ -9,7 +9,7 @@ import {
   Route,
 } from 'react-router-dom'
 import TaskBoard from './routes/taskBoard/taskBoard';
-import Faq from './routes/faq';
+import Faq from './routes/faq/faq';
 import './fontawesome';
 import Home from './routes/home/home';
 
