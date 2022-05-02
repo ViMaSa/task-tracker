@@ -47,8 +47,8 @@ const Faq = () => {
         <h3 className='question'>Is this the end of the presentation?</h3>
         <div className='answer'>
           <p>Yes, but I really enjoyed getting lost in this project.</p>
-          <p>Here is a gif of Pepo (young Pepe):</p>
-          <img src="https://c.tenor.com/FWyrZn41MiwAAAAC/peepoclap.gif" alt="Peepo Clapping" />
+          <p>Here is a gif of Peepo (young Pepe):</p>
+          <img src="https://c.tenor.com/iurxsVItVoIAAAAi/pepeclap-pepe.gif" alt="Peepo Clapping" />
         </div>
       </section>
     </div>
