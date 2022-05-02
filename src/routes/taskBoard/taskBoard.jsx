@@ -1,3 +1,4 @@
+import './taskboard.css'
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import NewTaskComponent from "../../taskComponents/newTaskComponent/newTaskComponent";
@@ -9,16 +10,6 @@ const TaskBoard = () => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [tasks, setTasks] = useState([]);
   const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
-
-  const getTasks = async () => {
-    try {
-      const tasks = await fetch(BASE_URL);
-      const parsedTasks = await tasks.json();
-      setTasks(parsedTasks.data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
   const deleteTask = async (idToDelete) => {
     try {
@@ -73,14 +64,25 @@ const TaskBoard = () => {
   }
 
   useEffect(() => {
+    const getTasks = async () => {
+      try {
+        const tasks = await fetch(process.env.REACT_APP_BASE_URL);
+        const parsedTasks = await tasks.json();
+        setTasks(parsedTasks.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
     getTasks()
   }, []);
 
   return (
-    <div>
-      <h1>Task Board</h1>
-
-      <button onClick={() => setCreateModalIsOpen(true)}><FontAwesomeIcon icon="fa-solid fa-plus" /> Create Task</button>
+    <div id='task-dashboard-container'>
+      <header id='task-dashboard-header'>
+        <h1>Task Board</h1>
+        <span><button onClick={() => setCreateModalIsOpen(true)}><FontAwesomeIcon icon="fa-solid fa-plus" /> Create Task</button></span>
+      </header>
       <Modal isOpen={createModalIsOpen}>
         <NewTaskComponent
           createNewTask={createNewTask}
@@ -90,16 +92,18 @@ const TaskBoard = () => {
         <button onClick={() => setCreateModalIsOpen(false)}>Cancel</button>
       </Modal>
 
-      {tasks.sort((task1, task2) => task1.priority - task2.priority).map(task => {
-        return (
-          <SingleTaskComponent
-            key={task._id}
-            deleteTask={deleteTask}
-            updateTask={updateTask}
-            task={task}>
-          </SingleTaskComponent>
-        )
-      })}
+      <div className='task-dashboard'>
+        {tasks.sort((task1, task2) => task1.priority - task2.priority).map(task => {
+          return (
+            <SingleTaskComponent
+              key={task._id}
+              deleteTask={deleteTask}
+              updateTask={updateTask}
+              task={task}>
+            </SingleTaskComponent>
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -1,0 +1,13 @@
+#frequently-asked-questions-container {
+  width: 100%;
+}
+
+#frequently-asked-questions-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.answer {
+  text-align: left;
+}
