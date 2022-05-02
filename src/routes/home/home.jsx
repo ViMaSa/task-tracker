@@ -2,22 +2,19 @@ import './home.css';
 import { useState, useEffect } from 'react';
 
 const Home = () => {
-  const BASE_URL = "https://task-tracker-back-end.herokuapp.com/tasks"
   const [tasks, setTasks] = useState([]);
 
-  const getTasks = async () => {
-    try {
-      const tasks = await fetch(BASE_URL);
-      const parsedTasks = await tasks.json();
-      setTasks(parsedTasks.data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-
   useEffect(() => {
-    getTasks()
+    const getTasks = async () => {
+      try {
+        const tasks = await fetch(process.env.REACT_APP_BASE_URL);
+        const parsedTasks = await tasks.json();
+        setTasks(parsedTasks.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getTasks();
   }, []);
 
   return (
