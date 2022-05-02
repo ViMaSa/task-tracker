@@ -1,0 +1,7 @@
+.index-single-task h2 {
+  display: inline-flex;
+}
+
+.index-single-task h2 button {
+  margin-left: 1rem;
+}

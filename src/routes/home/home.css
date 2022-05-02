@@ -1,0 +1,43 @@
+#home-main-content {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#home-main-content h3 {
+  width: 50%;
+}
+#home-main-content h3 hr {
+  background-color: rgb(235, 236, 240);
+}
+
+#home-main-content #stats-section {
+  display: flex;
+  height: 90%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 2rem;
+}
+
+#home-main-content #stats-section .stats-details {
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem #caccd2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem;
+  min-width: 786px;
+  width: 45vw;
+}
+
+#stats-section .stats-details h1 {
+  color: #0739C0;
+  font-size: 4rem;
+}
+
+#stats-section .stats-details p {
+  font-size: 3rem;
+  font-weight: bold;
+}
